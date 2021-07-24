@@ -1,5 +1,6 @@
-import React, { useState,useEffect } from "react";
-import { Icon, Label, Menu, Table, Header } from "semantic-ui-react";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import { Button, Card, Image } from 'semantic-ui-react'
 import EmployerService from "../../services/employerService";
 
 export default function EmployerList() {
@@ -14,50 +15,37 @@ export default function EmployerList() {
 
   return (
     <div>
-      <Header as="h2">
-        <Icon name="list alternate outline" />
-        <Header.Content>İş Veren Listesi</Header.Content>
-      </Header>
-      <Table celled>
-        <Table.Header>
-          <Table.Row>
-            <Table.HeaderCell>Şirket Adı</Table.HeaderCell>
-            <Table.HeaderCell>Web adresi</Table.HeaderCell>
-            <Table.HeaderCell>Email adresi</Table.HeaderCell>
-            <Table.HeaderCell>Telefon No</Table.HeaderCell>
-          </Table.Row>
-        </Table.Header>
-
-        <Table.Body>
-          {employers.map((employer) => (
-            <Table.Row key={employer.id}>
-              <Table.Cell>{employer.companyName}</Table.Cell>
-              <Table.Cell>{employer.webAdress}</Table.Cell>
-              <Table.Cell>{employer.email}</Table.Cell>
-              <Table.Cell>{employer.phoneNumber}</Table.Cell>
-            </Table.Row>
-          ))}
-        </Table.Body>
-
-        <Table.Footer>
-          <Table.Row>
-            <Table.HeaderCell colSpan="3">
-              <Menu floated="right" pagination>
-                <Menu.Item as="a" icon>
-                  <Icon name="chevron left" />
-                </Menu.Item>
-                <Menu.Item as="a">1</Menu.Item>
-                <Menu.Item as="a">2</Menu.Item>
-                <Menu.Item as="a">3</Menu.Item>
-                <Menu.Item as="a">4</Menu.Item>
-                <Menu.Item as="a" icon>
-                  <Icon name="chevron right" />
-                </Menu.Item>
-              </Menu>
-            </Table.HeaderCell>
-          </Table.Row>
-        </Table.Footer>
-      </Table>
+      <Card.Group>
+        {employers.map((employer)=>(
+          <Card fluid key={employer.id}>
+          <Card.Content>
+            <Image
+              floated="right"
+              size="mini"
+              src="/images/avatar/large/steve.jpg"
+            />
+            <Card.Header>{employer.companyName}</Card.Header>
+            <Card.Meta>{employer.webAdress}</Card.Meta>
+            <Card.Description>
+                <p><b>Eposta: </b>{employer.email}</p>
+                <p><b>Telefon: </b>{employer.phoneNumber}</p>
+            </Card.Description>
+          </Card.Content>
+          <Card.Content extra>
+            <div className="ui two buttons">
+              <Button basic color="green" as={Link} to={`/employers/${employer.id}`}>
+                Detaylar
+              </Button>
+              <Button basic color="red">
+                Web sitesi
+              </Button>
+            </div>
+          </Card.Content>
+        </Card>
+        ))}
+        
+        
+      </Card.Group>
     </div>
   );
 }

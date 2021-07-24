@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Label, Menu, Table, Header } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Icon, Button, Table, Header } from "semantic-ui-react";
 import CandidateService from "../../services/candidateService";
 
 export default function CandidateList() {
@@ -10,7 +11,7 @@ export default function CandidateList() {
     candidateService
       .getCandidates()
       .then((result) => setcandidates(result.data.data));
-  });
+  },[]);
 
   return (
     <div>
@@ -24,8 +25,8 @@ export default function CandidateList() {
             <Table.HeaderCell>Adı</Table.HeaderCell>
             <Table.HeaderCell>Soyadı</Table.HeaderCell>
             <Table.HeaderCell>Email</Table.HeaderCell>
-            <Table.HeaderCell>TC Kimlik No</Table.HeaderCell>
             <Table.HeaderCell>Doğum Tarihi</Table.HeaderCell>
+            <Table.HeaderCell>Detaylar</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -35,8 +36,15 @@ export default function CandidateList() {
               <Table.Cell>{candidate.firstName}</Table.Cell>
               <Table.Cell>{candidate.lastName}</Table.Cell>
               <Table.Cell>{candidate.email}</Table.Cell>
-              <Table.Cell>{candidate.nationalId}</Table.Cell>
               <Table.Cell>{candidate.birthDate}</Table.Cell>
+              <Table.Cell>
+                <Button animated as={Link} to={`/candidates/${candidate.id}`}>
+                  <Button.Content visible>Detayları Gör</Button.Content>
+                  <Button.Content hidden>
+                    <Icon name="arrow right" />
+                  </Button.Content>
+                </Button>
+              </Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
@@ -44,18 +52,7 @@ export default function CandidateList() {
         <Table.Footer>
           <Table.Row>
             <Table.HeaderCell colSpan="3">
-              <Menu floated="right" pagination>
-                <Menu.Item as="a" icon>
-                  <Icon name="chevron left" />
-                </Menu.Item>
-                <Menu.Item as="a">1</Menu.Item>
-                <Menu.Item as="a">2</Menu.Item>
-                <Menu.Item as="a">3</Menu.Item>
-                <Menu.Item as="a">4</Menu.Item>
-                <Menu.Item as="a" icon>
-                  <Icon name="chevron right" />
-                </Menu.Item>
-              </Menu>
+              
             </Table.HeaderCell>
           </Table.Row>
         </Table.Footer>

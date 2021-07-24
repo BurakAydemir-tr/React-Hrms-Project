@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { Button, Dropdown, Menu, Container } from "semantic-ui-react";
 
 export default function Navi() {
@@ -10,11 +11,9 @@ export default function Navi() {
           <Menu.Item name="İş ilanları" />
 
           <Menu.Menu position="right">
-            <Dropdown item text="Language">
+            <Dropdown item text="İş ilanları">
               <Dropdown.Menu>
-                <Dropdown.Item>English</Dropdown.Item>
-                <Dropdown.Item>Russian</Dropdown.Item>
-                <Dropdown.Item>Spanish</Dropdown.Item>
+                <Dropdown.Item as={Link} to={"/jobAdvertisementAdd"}>İş ilanı ekle</Dropdown.Item>  
               </Dropdown.Menu>
             </Dropdown>
 

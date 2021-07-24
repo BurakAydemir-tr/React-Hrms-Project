@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 import { Icon, Menu } from 'semantic-ui-react'
 
 export default function Section() {
@@ -7,23 +8,23 @@ export default function Section() {
       <Menu icon="labeled" vertical inverted>
         <Menu.Item
           name="bullhorn"
-          
+          as={NavLink} to="/jobAdvertisements"
         >
           <Icon name="bullhorn" />
           İlanlar
         </Menu.Item>
 
         <Menu.Item
-          name="video camera"
-          
+          name="employer"
+          as={NavLink} to="/employers"
         >
-          <Icon name="user" />
+          <Icon name="factory" />
           İş Verenler
         </Menu.Item>
 
         <Menu.Item
-          name="video play"
-          
+          name="candidate"
+          as={NavLink} to="/candidates"
         >
           <Icon name="user" />
           İş Arayanalar

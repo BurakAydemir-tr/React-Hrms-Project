@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Icon, Label, Menu, Table, Header } from "semantic-ui-react";
+import { Link } from "react-router-dom";
+import { Icon, Menu, Table, Header,Button } from "semantic-ui-react";
 import JobAdvertService from "../../services/jobAdvertService";
 
 export default function JobAdvertisementList() {
@@ -8,7 +9,7 @@ export default function JobAdvertisementList() {
   useEffect(()=>{
     let jobAdvertService=new JobAdvertService();
     jobAdvertService.getJobAdverts().then(result=>setJobAdverts(result.data.data));
-  })
+  },[])
 
   return (
     <div>
@@ -24,6 +25,7 @@ export default function JobAdvertisementList() {
             <Table.HeaderCell>İş pozisyonu</Table.HeaderCell>
             <Table.HeaderCell>Açıklama</Table.HeaderCell>
             <Table.HeaderCell>Son başvuru Tarihi</Table.HeaderCell>
+            <Table.HeaderCell>Detaylar</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
 
@@ -35,6 +37,11 @@ export default function JobAdvertisementList() {
               <Table.Cell>{jobAdvert.jobPosition.position}</Table.Cell>
               <Table.Cell>{jobAdvert.jobDescription}</Table.Cell>
               <Table.Cell>{jobAdvert.deadlineDate}</Table.Cell>
+              <Table.Cell><Button as={Link} to={`/jobAdvertisements/${jobAdvert.id}`}
+                  content="Detayları Gör"
+                  icon="right arrow"
+                  labelPosition="right"
+                /></Table.Cell>
             </Table.Row>
           ))}
         </Table.Body>
