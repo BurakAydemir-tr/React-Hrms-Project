@@ -15,7 +15,7 @@ export default function LanguageUpdate({resumeId,updateResumeValues}) {
     languageService.getByResumeId(resumeId).then((result) => {
       setLanguages(result.data.data);
     });
-  }, [resumeId]);
+  }, [languages]);
 
   let languageAddSchema = Yup.object().shape({
     languageName: Yup.string()
@@ -38,10 +38,7 @@ export default function LanguageUpdate({resumeId,updateResumeValues}) {
       console.log(values)
       languageService.add(values).then((result)=>{
           toast.success(result.data.message);
-          languageService.getByResumeId(resumeId).then((result)=>{
-              setLanguages(result.data.data)
-          })
-          //updateResumeValues()
+          
       }).catch((result)=>{
           toast.error(result.data.message)
       }) 
@@ -64,10 +61,7 @@ export default function LanguageUpdate({resumeId,updateResumeValues}) {
       //console.log(language)
       languageService.delete(language).then((result)=>{
           toast.success(result.data.message);
-          languageService.getByResumeId(resumeId).then((result)=>{
-              setLanguages(result.data.data)
-          })
-          //updateResumeValues()
+         
       })
   }
 

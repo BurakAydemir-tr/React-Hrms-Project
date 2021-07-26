@@ -13,7 +13,7 @@ export default function TechnologyUpdate({ resumeId }) {
     technologyService.getByResumeId(resumeId).then((result) => {
       setTechnology(result.data.data);
     });
-  }, [resumeId]);
+  }, [technologies]);
 
   const technologySchema = Yup.object({
     description: Yup.string()
@@ -30,9 +30,7 @@ export default function TechnologyUpdate({ resumeId }) {
       values.resumeId=resumeId;
       technologyService.add(values).then((result)=>{
           alert(result.data.message);
-          technologyService.getByResumeId(resumeId).then((result)=>{
-              setTechnology(result.data.data)
-          })
+          
       })
     },
   });
@@ -40,9 +38,7 @@ export default function TechnologyUpdate({ resumeId }) {
   const handleDeleteTechnology = (technology) => {
     technologyService.delete(technology).then((result)=>{
         alert(result.data.message)
-        technologyService.getByResumeId(resumeId).then((result)=>{
-            setTechnology(result.data.data)
-        })
+        
     })
   };
 

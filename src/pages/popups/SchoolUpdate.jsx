@@ -18,7 +18,7 @@ export default function SchoolUpdate({ resumeId }) {
     schoolService.getByResumeId(resumeId).then((result) => {
       setSchools(result.data.data);
     });
-  },[resumeId]);
+  },[schools]);
 
   const [eduGraduates, setEduGraduates] = useState([]);
 
@@ -63,10 +63,8 @@ export default function SchoolUpdate({ resumeId }) {
       console.log(newSchool);
       schoolService.add(newSchool).then((result) => {
         alert("Okul güncellendi");
-        //formik.resetForm()
-        schoolService.getByResumeId(resumeId).then((result)=>{
-          setSchools(result.data.data)
-        })
+        formik.resetForm()
+        
       });
     },
   });
@@ -79,9 +77,7 @@ export default function SchoolUpdate({ resumeId }) {
       };
     schoolService.delete(newSchool).then((result) => {
       alert("Okul Silindi");
-      schoolService.getByResumeId(resumeId).then((result)=>{
-        setSchools(result.data.data)
-      })
+      
     });
   };
 

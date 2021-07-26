@@ -41,7 +41,7 @@ export default function Resume() {
     resumeService
       .getByCandidateId(id)
       .then((result) => setResume(result.data.data));
-  }, [id]);
+  }, [resume]);
 
   const updateResumeValues = () => {
     resumeService.getByCandidateId(id).then((result) => {

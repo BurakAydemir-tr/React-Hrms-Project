@@ -16,7 +16,7 @@ export default function JobExperienceUpdate({ resumeId }) {
       jobExperienceService.getByResumeId(resumeId).then((result)=>{
         setJobExperiences(result.data.data)
       })
-    },[])
+    },[jobExperiences])
 
     const jobExperienceSchema=Yup.object({
         companyName:Yup.string().required("Zorunlu alan"),
@@ -35,9 +35,6 @@ export default function JobExperienceUpdate({ resumeId }) {
             values.resumeId=resumeId
             jobExperienceService.add(values).then((result)=>{
               alert("İş tecrübesi eklendi.")
-              jobExperienceService.getByResumeId(resumeId).then((result)=>{
-                setJobExperiences(result.data.data)
-              })
             })
         }
     })
@@ -45,9 +42,6 @@ export default function JobExperienceUpdate({ resumeId }) {
     const handleDeleteJobExperiance=(jobExperience)=>{
         jobExperienceService.delete(jobExperience).then((result)=>{
           alert("İş tecrübesi silindi.")
-          jobExperienceService.getByResumeId(resumeId).then((result)=>{
-            setJobExperiences(result.data.data)
-          })
         })
     }
 
