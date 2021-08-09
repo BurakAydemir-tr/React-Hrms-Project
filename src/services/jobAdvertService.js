@@ -12,4 +12,8 @@ export default class JobAdvertService{
     getById(id){
         return axios.get("http://localhost:8080/api/jobadvertisements/getById?id="+id)
     }
+
+    getFilterAndPage(pageNo,pageSize,filterOption){
+        return axios.post("http://localhost:8080/api/jobadvertisements/getFilterAndPage?pageNo="+pageNo+"&pageSize="+pageSize,filterOption)
+    }
 }
