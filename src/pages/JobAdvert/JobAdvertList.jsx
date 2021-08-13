@@ -7,15 +7,18 @@ export default function JobAdvertList({ indexies }) {
   const [activePage, setActivePage] = useState(1);
   const [pageSize] = useState(4);
   const [totalPageSize, setTotalPageSize] = useState(0);
-
+  
+  //console.log(indexies)
   useEffect(() => {
-    // let jobAdvertService = new JobAdvertService();
-    // jobAdvertService
-    //   .getFilterAndPage(activePage,pageSize,indexies)
-    //   .then((result) => {
-    //     setJobAdverts(result.data.data);
-    //     setTotalPageSize(result.data.data.length)
-    //   })
+    let jobAdvertService = new JobAdvertService();
+    jobAdvertService.getJobAdverts().then((result)=>{
+      setTotalPageSize(result.data.data.length) 
+    })
+    jobAdvertService
+      .getFilterAndPage(activePage,pageSize,indexies)
+      .then((result) => {
+        setJobAdverts(result.data.data);
+      })
   }, [indexies,activePage,pageSize]);
 
   const handlePageChange=({activePage})=>{

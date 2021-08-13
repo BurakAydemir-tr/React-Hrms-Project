@@ -49,38 +49,39 @@ export default function Filter() {
       value:jobPosition.id
   }))
 
-  const [cityIndex, setCityIndex] = useState([]);
-  const handleChangeCity = ({value}) => {
-    console.log(value)
-    setCityIndex(value);
-    //console.log(cityIndex)
+  const [cityId, setCityId] = useState([]);
+  const handleChangeCity = (event,{value}) => {
+    setCityId(value);
   }
 
-  const [jobPositionIndex, setJobPositionIndex] = useState([])
-  const handleChangeJobPosition=({value})=>{
-    setJobPositionIndex([...jobPositionIndex,value])
+  const [jobPositionId, setJobPositionId] = useState([])
+  const handleChangeJobPosition=(event,{value})=>{
+    //console.log(value)
+    setJobPositionId(value)
   }
 
-  const [typeWorkIndex, setTypeWorkIndex] = useState([])
-  const handleChangeTypeWork=({value,checked})=>{
+  const [typeWorkId, setTypeWorkId] = useState([])
+  const handleChangeTypeWork=(event,{value,checked})=>{
+    //console.log(value)
     if(checked){
-      typeWorkIndex.push(value)
+      typeWorkId.push(value)
     }else{
-      let index=typeWorkIndex.indexOf(value);
+      let index=typeWorkId.indexOf(value);
       if(index>-1){
-        typeWorkIndex.splice(index,1)
+        typeWorkId.splice(index,1)
       }
     }
+    //console.log(typeWorkId)
   }
 
-  const [howWorkIndex, setHowWorkIndex] = useState([])
-  const handleChangeHowWork=({value,checked})=>{
+  const [howWorkId, setHowWorkId] = useState([])
+  const handleChangeHowWork=(event,{value,checked})=>{
     if(checked){
-      howWorkIndex.push(value)
+      howWorkId.push(value)
     }else{
-      let index=howWorkIndex.indexOf(value);
+      let index=howWorkId.indexOf(value);
       if(index>-1){
-        howWorkIndex.splice(index,1)
+        howWorkId.splice(index,1)
       }
     }
   }
@@ -89,17 +90,17 @@ export default function Filter() {
 
   function handleFilterClick(props) {
     console.log(props)
-    if(props.cityIndex.length===0){
-      props.cityIndex=null;
+    if(props.cityId.length===0){
+      props.cityId=null;
     }
-    if (props.jobPositionIndex.length===0) {
-      props.jobPositionIndex=null;
+    if (props.jobPositionId.length===0) {
+      props.jobPositionId=null;
     }
-    if(props.typeWorkIndex.length===0){
-      props.typeWorkIndex=null;
+    if(props.typeWorkId.length===0){
+      props.typeWorkId=null;
     }
-    if(props.howWorkIndex.length===0){
-      props.howWorkIndex=null;
+    if(props.howWorkId.length===0){
+      props.howWorkId=null;
     }
     console.log(props)
     setIndexies(props);
@@ -118,10 +119,10 @@ export default function Filter() {
                   search
                   selection
                   clearable
-                  multiple={true}
+                  multiple
                   options={citiesOption}
                   onChange={handleChangeCity}
-                  value={cityIndex || []}
+                  value={cityId}
                 />
               </Segment>
             </SegmentGroup>
@@ -136,7 +137,7 @@ export default function Filter() {
                   multiple
                   options={jobPositionOption}
                   onChange={handleChangeJobPosition}
-                  value={jobPositionIndex}
+                  value={jobPositionId}
                 /> 
               </Segment>
             </SegmentGroup>
@@ -166,7 +167,7 @@ export default function Filter() {
                 </Segment>
               ))}
             </SegmentGroup>
-            <Button fluid onClick={()=>handleFilterClick({cityIndex,jobPositionIndex,typeWorkIndex,howWorkIndex})}>Filtrele</Button>
+            <Button fluid onClick={()=>handleFilterClick({cityId,jobPositionId,typeWorkId,howWorkId})}>Filtrele</Button>
           </Grid.Column>
           <Grid.Column width={12}>
               <JobAdvertList indexies={indexies}/>
