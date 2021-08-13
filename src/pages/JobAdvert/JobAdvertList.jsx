@@ -11,17 +11,20 @@ export default function JobAdvertList({ indexies }) {
   //console.log(indexies)
   useEffect(() => {
     let jobAdvertService = new JobAdvertService();
-    jobAdvertService.getJobAdverts().then((result)=>{
-      setTotalPageSize(result.data.data.length) 
-    })
+    
     jobAdvertService
       .getFilterAndPage(activePage,pageSize,indexies)
       .then((result) => {
         setJobAdverts(result.data.data);
+        jobAdvertService.getCountJobAdvert().then((result)=>{
+          setTotalPageSize(result.data.data)
+        })
       })
   }, [indexies,activePage,pageSize]);
 
-  const handlePageChange=({activePage})=>{
+  
+
+  const handlePageChange=(e,{activePage})=>{
     setActivePage(activePage)
   }
 

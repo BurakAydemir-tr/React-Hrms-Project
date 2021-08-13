@@ -37,7 +37,7 @@ export default function Filter() {
       .then((result) => setHowWorks(result.data.data));
   }, []);
 
-  const citiesOption = cities.map((city, index) => ({
+  const citiesOption = cities.map((city, index) =>({
     key: index,
     text: city.name,
     value: city.id,
@@ -51,6 +51,7 @@ export default function Filter() {
 
   const [cityId, setCityId] = useState([]);
   const handleChangeCity = (event,{value}) => {
+    //console.log(value)
     setCityId(value);
   }
 

@@ -21,5 +21,9 @@ export default class JobAdvertService {
     getFilterAndPage(pageNo,pageSize,filterOption){
         return axios.post("http://localhost:8080/api/jobadvertisements/getFilterAndPage?pageNo="+pageNo+"&pageSize="+pageSize,filterOption)
     }
+  
+    getCountJobAdvert(){
+      return axios.get("http://localhost:8080/api/jobadvertisements/getCountJobAdvert")
+    }
 }
   
