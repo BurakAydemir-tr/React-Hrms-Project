@@ -38,7 +38,7 @@ export default function CandidateList() {
               <Table.Cell>{candidate.email}</Table.Cell>
               <Table.Cell>{candidate.birthDate}</Table.Cell>
               <Table.Cell>
-                <Button animated as={Link} to={`/candidates/${candidate.id}`}>
+                <Button animated as={Link} to={`/home/candidates/${candidate.id}`}>
                   <Button.Content visible>Detayları Gör</Button.Content>
                   <Button.Content hidden>
                     <Icon name="arrow right" />

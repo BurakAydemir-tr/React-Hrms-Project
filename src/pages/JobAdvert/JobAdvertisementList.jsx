@@ -37,7 +37,7 @@ export default function JobAdvertisementList() {
               <Table.Cell>{jobAdvert.jobPosition.position}</Table.Cell>
               <Table.Cell>{jobAdvert.jobDescription}</Table.Cell>
               <Table.Cell>{jobAdvert.deadlineDate}</Table.Cell>
-              <Table.Cell><Button as={Link} to={`/jobAdvertisements/${jobAdvert.id}`}
+              <Table.Cell><Button as={Link} to={`/home/jobAdvertisements/${jobAdvert.id}`}
                   content="Detayları Gör"
                   icon="right arrow"
                   labelPosition="right"

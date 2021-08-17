@@ -5,31 +5,52 @@ import Section from "./Section";
 import { Grid } from "semantic-ui-react";
 import CandidateList from "../pages/User/CandidateList";
 import EmployerList from "../pages/User/EmployerList";
-import { Route, Switch } from "react-router-dom";
+import { Route, Switch, useRouteMatch } from "react-router-dom";
 import JobAdvertDetail from "../pages/JobAdvert/JobAdvertDetail";
 import Resume from "../pages/User/Resume";
 import EmployerDetail from "../pages/User/EmployerDetail";
 
 export default function Dashboard() {
+
+  let match=useRouteMatch();
+  console.log(match)
+
   return (
     <div>
       <Grid>
         <Grid.Row>
           <Grid.Column width={3}>
-            <Section />
+            <Section match={match}/>
           </Grid.Column>
           <Grid.Column width={13}>
-            <Switch>
-            <Route exact path="/" component={JobAdvertisementList}/>
-            <Route exact path="/jobAdvertisements" component={JobAdvertisementList}/>
-            <Route exact path="/jobAdvertisements/:id" component={JobAdvertDetail}/>
-            <Route exact path="/jobAdvertisementAdd" component={JobAdvertisementAdd}/>
-            <Route exact path="/candidates" component={CandidateList}/>
-            <Route exact path="/candidates/:id" component={Resume}/>
-            <Route exact path="/employers" component={EmployerList}/>
-            <Route exact path="/employers/:id" component={EmployerDetail}/>
-            <Route exact path="/jobAdvertAdd" component={JobAdvertisementAdd}/>
-            </Switch>
+              <Route
+                exact
+                path={`${match.path}/jobAdvertisements`}
+                component={JobAdvertisementList}
+              />
+              <Route
+                exact
+                path={`${match.path}/jobAdvertisements/:id`}
+                component={JobAdvertDetail}
+              />
+              <Route
+                exact
+                path={`${match.path}/jobAdvertisementAdd`}
+                component={JobAdvertisementAdd}
+              />
+              <Route exact path={`${match.path}/candidates`} component={CandidateList} />
+              <Route exact path={`${match.path}/candidates/:id`} component={Resume} />
+              <Route exact path={`${match.path}/employers`} component={EmployerList} />
+              <Route
+                exact
+                path={`${match.path}/employers/:id`}
+                component={EmployerDetail}
+              />
+              <Route
+                exact
+                path={`${match.path}/jobAdvertAdd`}
+                component={JobAdvertisementAdd}
+              />
           </Grid.Column>
         </Grid.Row>
       </Grid>

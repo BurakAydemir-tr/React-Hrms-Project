@@ -1,14 +1,15 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink,useRouteMatch } from "react-router-dom";
 import { Icon, Menu } from 'semantic-ui-react'
 
-export default function Section() {
+export default function Section({match}) {
+
   return (
     <div>
       <Menu icon="labeled" vertical inverted>
         <Menu.Item
           name="bullhorn"
-          as={NavLink} to="/jobAdvertisements"
+          as={NavLink} to={`${match.url}/jobAdvertisements`}
         >
           <Icon name="bullhorn" />
           İlanlar
@@ -16,7 +17,7 @@ export default function Section() {
 
         <Menu.Item
           name="employer"
-          as={NavLink} to="/employers"
+          as={NavLink} to={`${match.url}/employers`}
         >
           <Icon name="factory" />
           İş Verenler
@@ -24,7 +25,7 @@ export default function Section() {
 
         <Menu.Item
           name="candidate"
-          as={NavLink} to="/candidates"
+          as={NavLink} to={`${match.url}/candidates`}
         >
           <Icon name="user" />
           İş Arayanalar

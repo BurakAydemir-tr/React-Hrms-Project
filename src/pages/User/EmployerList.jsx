@@ -33,7 +33,7 @@ export default function EmployerList() {
           </Card.Content>
           <Card.Content extra>
             <div className="ui two buttons">
-              <Button basic color="green" as={Link} to={`/employers/${employer.id}`}>
+              <Button basic color="green" as={Link} to={`/home/employers/${employer.id}`}>
                 Detaylar
               </Button>
               <Button basic color="red">

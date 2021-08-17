@@ -10,6 +10,8 @@ export default function Navi() {
 
   const history=useHistory()
 
+  
+
   function handleSignOut() {
     setIsAuthenticated(false)
     history.push("/")
@@ -24,14 +26,14 @@ export default function Navi() {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item name="Ana Sayfa" />
-          <Menu.Item name="İş ilanları" as={NavLink} to="/jobAdvertisements"/>
-          <Menu.Item name="İş Verenler" as={NavLink} to="/employers"/>
-          <Menu.Item name="İş Arayanlar" as={NavLink} to="/candidates"/>
+          <Menu.Item name="İş ilanları" as={NavLink} to="/home"/>
+          <Menu.Item name="İş Verenler" as={NavLink} to="/home"/>
+          <Menu.Item name="İş Arayanlar" as={NavLink} to="/candidate"/>
 
           <Menu.Menu position="right">
             <Dropdown item text="İş ilanları">
               <Dropdown.Menu>
-                <Dropdown.Item as={Link} to={"/jobAdvertisementAdd"}>İş ilanı ekle</Dropdown.Item>  
+                <Dropdown.Item as={Link} to={"/home/jobAdvertisementAdd"}>İş ilanı ekle</Dropdown.Item>  
               </Dropdown.Menu>
             </Dropdown>
           
