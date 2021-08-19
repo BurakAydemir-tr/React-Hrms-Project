@@ -1,12 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { Button, Card,Pagination } from "semantic-ui-react";
 import JobAdvertService from "../../services/jobAdvertService";
+import { useDispatch } from "react-redux";
+import { addToFavorite } from "../../store/actions/favoriteAction";
+import { toast } from "react-toastify";
 
 export default function JobAdvertList({ indexies }) {
   const [jobAdverts, setJobAdverts] = useState([]);
   const [activePage, setActivePage] = useState(1);
   const [pageSize] = useState(4);
   const [totalPageSize, setTotalPageSize] = useState(0);
+
+  //Dispatch fonksiyon çağırmaya yarıyor.
+  const dispatch = useDispatch()
   
   //console.log(indexies)
   useEffect(() => {
@@ -26,6 +32,11 @@ export default function JobAdvertList({ indexies }) {
 
   const handlePageChange=(e,{activePage})=>{
     setActivePage(activePage)
+  }
+
+  const handleAddToFavorite=(jobAdvert)=>{
+      dispatch(addToFavorite(jobAdvert))
+      toast.success("İlan favorilere eklendi")
   }
 
   return (
@@ -58,7 +69,7 @@ export default function JobAdvertList({ indexies }) {
                 <Button basic color="green">
                   Detaylar
                 </Button>
-                <Button basic color="red">
+                <Button basic color="red" onClick={()=>handleAddToFavorite(jobAdvert)}>
                   Favorilere ekle
                 </Button>
               </div>

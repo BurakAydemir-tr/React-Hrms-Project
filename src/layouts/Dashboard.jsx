@@ -5,7 +5,7 @@ import Section from "./Section";
 import { Grid } from "semantic-ui-react";
 import CandidateList from "../pages/User/CandidateList";
 import EmployerList from "../pages/User/EmployerList";
-import { Route, Switch, useRouteMatch } from "react-router-dom";
+import { Route, useRouteMatch } from "react-router-dom";
 import JobAdvertDetail from "../pages/JobAdvert/JobAdvertDetail";
 import Resume from "../pages/User/Resume";
 import EmployerDetail from "../pages/User/EmployerDetail";
@@ -13,7 +13,7 @@ import EmployerDetail from "../pages/User/EmployerDetail";
 export default function Dashboard() {
 
   let match=useRouteMatch();
-  console.log(match)
+  //console.log(match)
 
   return (
     <div>
