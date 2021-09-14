@@ -7,6 +7,8 @@ import Navi from "./layouts/Navi";
 import { Route, Switch } from "react-router-dom";
 import Filter from "./layouts/Filter";
 import { ToastContainer } from "react-toastify";
+import AdminDashboard from "./layouts/AdminDashboard";
+import EmployerDashboard from "./layouts/EmployerDashboard";
 
 
 function App() {
@@ -20,6 +22,8 @@ function App() {
           <Route path="/home" component={Dashboard}/>
           <Route path="/candidate" component={CandidateDashboard} />
           <Route exact path="/filter" component={Filter}/>
+          <Route path="/adminpanel" component={AdminDashboard}/>
+          <Route path="/employer" component={EmployerDashboard}/>
         </Switch>
       </Container>
     </div>

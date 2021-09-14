@@ -26,8 +26,9 @@ export default function Navi() {
       <Menu inverted fixed="top">
         <Container>
           <Menu.Item name="Ana Sayfa" />
+          <Menu.Item name="Panel" as={NavLink} to="/adminpanel"/>
           <Menu.Item name="İş ilanları" as={NavLink} to="/home"/>
-          <Menu.Item name="İş Verenler" as={NavLink} to="/home"/>
+          <Menu.Item name="İş Verenler" as={NavLink} to="/employer"/>
           <Menu.Item name="İş Arayanlar" as={NavLink} to="/candidate"/>
 
           <Menu.Menu position="right">
