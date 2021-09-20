@@ -5,7 +5,6 @@ import {
   Icon,
   Card,
   Form,
-  Label,
   Button,
 } from "semantic-ui-react";
 import { useParams } from "react-router-dom";

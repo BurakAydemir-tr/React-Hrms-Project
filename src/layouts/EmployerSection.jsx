@@ -10,7 +10,7 @@ export default function EmployerSection({match}) {
         setActiveItem(name)
     }
 
-    let id=7
+    let id=10
   return (
     <div>
       <Menu inverted pointing vertical>
@@ -24,7 +24,7 @@ export default function EmployerSection({match}) {
           name="İlanlar"
           active={activeItem === "İlanlar"}
           onClick={handleItemClick}
-          as={Link} to={`${match.url}/:id/jobAdvertisements`}
+          as={Link} to={`${match.url}/${id}/jobAdvertisements`}
         />
         
       </Menu>
